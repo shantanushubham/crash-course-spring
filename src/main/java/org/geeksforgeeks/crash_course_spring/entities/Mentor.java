@@ -1,16 +1,19 @@
 package org.geeksforgeeks.crash_course_spring.entities;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "student")
+@Table(name = "mentor")
+@NoArgsConstructor
 @Getter
 @Setter
-public class Student {
+public class Mentor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -18,18 +21,19 @@ public class Student {
     private long id;
 
     @Column(name = "first_name", nullable = false)
-    @NotBlank(message = "First Name must not be null.")
+    @NotBlank
     private String firstName;
 
     @Column(name = "last_name", nullable = false)
     @NotBlank
     private String lastName;
 
-    @Column(name = "email", nullable = false, unique = true)
-    @Email
-    private String email;
+    @Column(name = "current_company", nullable = false)
+    @NotBlank
+    private String currentCompany;
 
-    @Column(name = "password", nullable = false)
-    private String password;
-
+    @Column(name = "yoe", nullable = false)
+    @Min(0)
+    @Max(40)
+    private float yearsOfExperience;
 }

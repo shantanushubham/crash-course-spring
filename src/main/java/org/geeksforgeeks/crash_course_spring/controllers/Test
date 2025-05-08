@@ -1,0 +1,39 @@
+class DatabaseConnection {
+
+    // Is Singleton
+
+    // The purpose of this class is to connect to the Database
+
+    To connect to the database, it takes 5 seconds of time.
+
+}
+
+class StudentRepository {
+
+    public Student addStudent(Student s) {
+        DatabaseConnection connection = DatabaseConnection.getInstance();
+        connection.getTable("student").addNewRow(student);
+    }
+
+}
+
+
+In Spring Boot, we have a concept of Bean
+Bean is LIKE a singleton class
+
+If I create a Bean in Spring Boot, then when we start our spring boot app
+one object of the bean class is created by Spring Boot and is stored in the memory
+and is used wherever necessary.
+
+To make class a bean, use:
+1. @Service
+2. @Component
+3. @Repository
+4. @RestController
+5. @Controller (not valid for Spring Boot, valid for Spring)
+
+@Component is the real player to make a class a bean.
+@Service, @Repository, @RestController behave the same way as @Component,
+but have 1-2 extra features. Especially @RestController
+
+All the above annotations internally use @Component
